@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>🎉 Chúc mừng sinh nhật Anh Thư 🎂</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background-color: pink;
+    }
+    .popup {
+      position: absolute;
+      background: white;
+      border: 2px solid hotpink;
+      padding: 20px;
+      font-family: sans-serif;
+      font-size: 16px;
+      border-radius: 8px;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+      animation: fadein 0.5s ease;
+      text-align: center;
+      max-width: 90%;
+      max-height: 70%;
+      word-wrap: break-word;
+    }
+    @keyframes fadein {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+    .icons {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+<script>
+  function spawnPopup(message, top, left) {
+    const popup = document.createElement("div");
+    popup.className = "popup";
+    popup.innerHTML = message; // Allow HTML content inside the popup
+    popup.style.top = top + "px";
+    popup.style.left = left + "px";
+    document.body.appendChild(popup);
+  }
+
+  let count = 0;
+  const interval = setInterval(() => {
+    spawnPopup("🎂 Happy Birthday Anh Thư 🎉", Math.random() * (window.innerHeight - 100), Math.random() * (window.innerWidth - 200));
+    count++;
+    if (count > 100) {
+      clearInterval(interval);
+      // After 100 popups, spawn the final message popup at the center
+      setTimeout(() => {
+        const finalMessage = `
+          <strong>Chúc mừng sinh nhật Anh Thư🎉 🎂 🎈 💐! Thêm một tuổi mới, mong em luôn mạnh khỏe, bình an và vững vàng theo đuổi những điều em thật sự muốn.
+          Cảm ơn vì đã luôn là một người bạn tuyệt vời, thật thà, có mặt đúng lúc và chẳng bao giờ màu mè.
+          Mong tụi mình sẽ còn nhiều dịp để gặp nhau hơn bây giờ. Sinh nhật vui vẻ nha em!</strong>
+        `;
+        const top = (window.innerHeight - 300) / 2; // Center vertically
+        const left = (window.innerWidth - 600) / 2; // Center horizontally
+        spawnPopup(finalMessage, top, left);
+      }, 500); // Add delay before the final message appears
+    }
+  }, 100);
+</script>
+</body>
+</html>
